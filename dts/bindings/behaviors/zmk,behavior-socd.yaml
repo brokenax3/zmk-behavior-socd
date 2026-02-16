@@ -1,0 +1,31 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: |
+  SOCD (Simultaneous Opposing Cardinal Directions) behavior.
+  Wraps a pair of opposing keys and applies SOCD resolution when both
+  are held simultaneously. Pass 0 to activate key0, or 1 to activate key1.
+
+compatible: "zmk,behavior-socd"
+
+include: one_param.yaml
+
+properties:
+  key0:
+    type: int
+    required: true
+    description: HID usage ID of the first key in the opposing pair (e.g. A)
+  key1:
+    type: int
+    required: true
+    description: HID usage ID of the second key in the opposing pair (e.g. D)
+  resolution:
+    type: int
+    required: false
+    default: 0
+    description: |
+      SOCD resolution strategy:
+        0 = SOCD_LAST (last input priority with reactivation, "Snap Tap")
+        1 = SOCD_NEUTRAL (both cancel, neither sent)
+        2 = SOCD_KEY0_WINS (key0 always takes priority)
+        3 = SOCD_KEY1_WINS (key1 always takes priority)
