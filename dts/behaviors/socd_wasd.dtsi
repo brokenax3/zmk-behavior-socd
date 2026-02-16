@@ -1,0 +1,30 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ * SPDX-License-Identifier: MIT
+ *
+ * Predefined SOCD instances for WASD gaming keys.
+ * Include this in your keymap to get &socd_ad and &socd_ws behaviors.
+ */
+
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/socd.h>
+
+/ {
+    behaviors {
+        /omit-if-no-ref/ socd_ad: socd_ad {
+            compatible = "zmk,behavior-socd";
+            #binding-cells = <1>;
+            key0 = <A>;
+            key1 = <D>;
+            resolution = <SOCD_LAST>;
+        };
+
+        /omit-if-no-ref/ socd_ws: socd_ws {
+            compatible = "zmk,behavior-socd";
+            #binding-cells = <1>;
+            key0 = <W>;
+            key1 = <S>;
+            resolution = <SOCD_LAST>;
+        };
+    };
+};
