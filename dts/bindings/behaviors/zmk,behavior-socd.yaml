@@ -14,15 +14,16 @@ properties:
   key0:
     type: int
     required: true
-    description: HID usage ID of the first key in the opposing pair (e.g. A)
+    description: Encoded ZMK keycode of the first key (e.g. A); must use a distinct output usage
   key1:
     type: int
     required: true
-    description: HID usage ID of the second key in the opposing pair (e.g. D)
+    description: Encoded ZMK keycode of the second key (e.g. D); must use a distinct output usage
   resolution:
     type: int
     required: false
     default: 0
+    enum: [0, 1, 2, 3]
     description: |
       SOCD resolution strategy:
         0 = SOCD_LAST (last input priority with reactivation, "Snap Tap")
